@@ -469,6 +469,30 @@ def moverAbajo(self):
           self.mapa[self.personaje_fila + 2][self.personaje_columna] = 6
           self.personaje_fila += 1
           print("# 3 (personaje, caja, meta) abajo")
+
+# 4 (personaje, caja_meta, espacio)
+    elif (
+          self.mapa[self.personaje_fila][self.personaje_columna] == 0
+          and self.mapa[self.personaje_fila + 1][self.personaje_columna] == 6
+          and self.mapa[self.personaje_fila + 2][self.personaje_columna] == 1
+    ):
+          self.mapa[self.personaje_fila][self.personaje_columna] = 1
+          self.mapa[self.personaje_fila + 1][self.personaje_columna] = 5
+          self.mapa[self.personaje_fila + 2][self.personaje_columna] = 2
+          self.personaje_fila += 1
+          print("# 4 (personaje, caja_meta, espacio) abajo")
+
+# 5 (personaje, caja_meta, meta)
+    elif (
+          self.mapa[self.personaje_fila][self.personaje_columna] == 0
+          and self.mapa[self.personaje_fila + 1][self.personaje_columna] == 6
+          and self.mapa[self.personaje_fila + 2][self.personaje_columna] == 4
+     ):
+          self.mapa[self.personaje_fila][self.personaje_columna] = 1
+          self.mapa[self.personaje_fila + 1][self.personaje_columna] = 5
+          self.mapa[self.personaje_fila + 2][self.personaje_columna] = 6
+          self.personaje_fila += 1
+          print("# 5 (personaje, caja_meta, meta) abajo")
     
 juego = sokoban()
 juego.imprimirMapa()
