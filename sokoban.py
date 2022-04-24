@@ -426,7 +426,28 @@ def moverArriba(self):
           self.personaje_fila -= 1
           print("# 11 (personaje_meta, caja_meta, meta) arriba")  
 
+def moverAbajo(self):
+# 0 (personaje, espacio)
+    if (
+        self.mapa[self.personaje_fila][self.personaje_columna] == 0
+        and self.mapa[self.personaje_fila + 1][self.personaje_columna] == 1
+    ):
+          self.mapa[self.personaje_fila][self.personaje_columna] = 1
+          self.mapa[self.personaje_fila + 1][self.personaje_columna] = 0
+          self.personaje_fila += 1
+          print("# 0 (personaje, espacio) abajo")
 
+# 1 (personaje, meta)
+    elif (
+          self.mapa[self.personaje_fila][self.personaje_columna] == 0
+          and self.mapa[self.personaje_fila + 1][self.personaje_columna] == 4
+    ):
+          self.mapa[self.personaje_fila][self.personaje_columna] = 1
+          self.mapa[self.personaje_fila + 1][self.personaje_columna] = 5
+          self.personaje_fila += 1
+          print("# 1 (personaje, meta) abajo")
+
+       
     
 juego = sokoban()
 juego.imprimirMapa()
