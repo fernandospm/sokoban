@@ -591,23 +591,20 @@ class sokoban:
           print("# 11 (personaje_meta, caja_meta, meta) abajo") 
 
 def jugar(self):
-        self.cargarMapa()
-        self.gps()
-        instrucciones = "d-derecha\na-izquierda\nw-arriba\ns-abajo"
-        print(instrucciones)
-        while True:
-            self.imprimirMapa()
-            print(self.personaje_fila, self.personaje_columna)
-            movimiento = input("Moverse")
-            self.cargarMapa()
-            if movimiento == "d":
-                self.moverDerecha()
-            elif movimiento == "a":
-                self.moverIzquierda()
-            elif movimiento == "w":
-                self.moverArriba()
-            elif movimiento == "s":
-                self.moverAbajo() 
+  while True:
+   self.imprimirMapa()
+  opciones = "d-derecha"
+  print(opciones)
+  movimiento = input("Moverse a: ")
+  if movimiento == "d":
+   self.moverDerecha()
+  elif movimiento == "s":
+   self.moverAbajo()
+  elif movimiento == "a":
+   self.moverIzquierda()
+  elif movimiento == "w":
+   self.moverArriba()
+
 
 juego = sokoban()
 juego.jugar()
