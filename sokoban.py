@@ -221,6 +221,38 @@ def moverIzquierda(self):
           self.personaje_columna -= 1
           print("# 5 (personaje, caja_meta, meta) izquierda")
 
+# 6 (personaje_meta, espacio)
+    elif (
+          self.mapa[self.personaje_fila][self.personaje_columna] == 5
+          and self.mapa[self.personaje_fila][self.personaje_columna - 1] == 1
+    ):
+          self.mapa[self.personaje_fila][self.personaje_columna] = 4
+          self.mapa[self.personaje_fila][self.personaje_columna - 1] = 0
+          self.personaje_columna -= 1
+          print("# 6 (personaje_meta, espacio) izquierda")
+
+# 7 (personaje_meta, meta)
+    elif (
+          self.mapa[self.personaje_fila][self.personaje_columna] == 5
+          and self.mapa[self.personaje_fila][self.personaje_columna - 1] == 4
+    ):
+          self.mapa[self.personaje_fila][self.personaje_columna] = 4
+          self.mapa[self.personaje_fila][self.personaje_columna - 1] = 5
+          self.personaje_columna -= 1
+          print("# 7 (personaje_meta, meta) izquierda")
+
+# 8 (personaje_meta, caja, espacio)
+    elif (
+          self.mapa[self.personaje_fila][self.personaje_columna] == 5
+          and self.mapa[self.personaje_fila][self.personaje_columna - 1] == 2
+          and self.mapa[self.personaje_fila][self.personaje_columna - 2] == 1
+    ):
+          self.mapa[self.personaje_fila][self.personaje_columna] = 4
+          self.mapa[self.personaje_fila][self.personaje_columna - 1] = 0
+          self.mapa[self.personaje_fila][self.personaje_columna - 2] = 2
+          self.personaje_columna -= 1
+          print("# 8 (personaje_meta, caja, espacio) izquierda")
+
   
     
 juego = sokoban()
