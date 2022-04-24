@@ -390,7 +390,43 @@ def moverArriba(self):
           self.personaje_fila -= 1
           print("# 8 (personaje_meta, caja, espacio) arriba")
 
-  
+# 9 (personaje_meta, caja, meta)
+    elif (
+          self.mapa[self.personaje_fila][self.personaje_columna] == 5
+          and self.mapa[self.personaje_fila - 1][self.personaje_columna] == 2
+          and self.mapa[self.personaje_fila - 2][self.personaje_columna] == 4
+    ):
+          self.mapa[self.personaje_fila][self.personaje_columna] = 4
+          self.mapa[self.personaje_fila - 1][self.personaje_columna] = 0
+          self.mapa[self.personaje_fila - 2][self.personaje_columna] = 6
+          self.personaje_fila -= 1
+          print("# 9 (personaje_meta, caja, meta) arriba")
+
+# 10 (personaje_meta, caja_meta, espacio)
+    elif (
+          self.mapa[self.personaje_fila][self.personaje_columna] == 5
+          and self.mapa[self.personaje_fila - 1][self.personaje_columna] == 6
+          and self.mapa[self.personaje_fila - 2][self.personaje_columna] == 1
+    ):
+          self.mapa[self.personaje_fila][self.personaje_columna] = 4
+          self.mapa[self.personaje_fila - 1][self.personaje_columna] = 5
+          self.mapa[self.personaje_fila - 2][self.personaje_columna] = 2
+          self.personaje_fila -= 1
+          print("# 10 (personaje_meta, caja_meta, espacio) arriba")
+
+# 11 (personaje_meta, caja_meta, meta)
+    elif (
+          self.mapa[self.personaje_fila][self.personaje_columna] == 5
+          and self.mapa[self.personaje_fila - 1][self.personaje_columna] == 6
+          and self.mapa[self.personaje_fila - 2][self.personaje_columna] == 4
+    ):
+          self.mapa[self.personaje_fila][self.personaje_columna] = 4
+          self.mapa[self.personaje_fila - 1][self.personaje_columna] = 5
+          self.mapa[self.personaje_fila - 2][self.personaje_columna] = 6
+          self.personaje_fila -= 1
+          print("# 11 (personaje_meta, caja_meta, meta) arriba")  
+
+
     
 juego = sokoban()
 juego.imprimirMapa()
