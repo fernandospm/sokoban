@@ -12,8 +12,8 @@ class Sokoban:
  """_summary_: Sokoban class"""
 
  map = []
- character_row = 0
- character_col = 0
+ character_row = 3
+ character_col = 3
 
  def __init__(self):
       """_summary_: Constructor"""
@@ -571,13 +571,8 @@ game.play()  # Fun Fun Fun ;
 
 
 
+
+
+
  
-  
-  
-  
-  
-
-
-  
-  
   
