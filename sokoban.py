@@ -1,45 +1,46 @@
-"""
-    Description: Sokoban game template
-    0 - Character
-    1 - Floor
-    2 - Box
-    3 - Wall
-    4 - Target
-    5 - Box_Target
-    6 - Character_Target
-"""
+from os import system, name
+from time import sleep
 class Sokoban:
  """_summary_: Sokoban class"""
+    
+"""
+      Description: Sokoban game template
+      0 - Character
+      1 - Floor
+      2 - Box
+      3 - Wall
+      4 - Target
+      5 - Box_Target
+      6 - Character_Target
+  """
+map = []
+"""nivel =open("Nivel.1","r")"""
 
- map = []
- character_row = 3
- character_col = 3
+character_row = 3
+character_col = 3
 
- def __init__(self):
-      """_summary_: Constructor"""
-      pass
+def leerMapa(self,lvl):
+        if lvl == 1:
+          self.nivel=open("Nivel,1", "r")
+        else:
+          self.nivel=open("Nivel,2", "r")
+        self.mapa = []
+        for  row in self.nivel:
+            linea = []
+            for digito in row:
+                if digito == "\n":
+                    continue
+                linea.append(int(digito))
+            self.mapa.append(linea)
+    
 
- def loadMap(self):
-     """_summary_: Load the map from a file"""
-     """"file = open("level.sokoban", "r") # Open the file"""
-    # TODO: read the file and load the map
-     self.map = [
-            [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
-            [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
-            [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
-            [3, 1, 1, 0, 1, 2, 1, 4, 1, 1, 3],
-            [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
-            [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
-            [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
-        ]
-
- def printMap(self):
+def printMap(self):
         """_summary_: Print the map"""
         # TODO: Print the map
         for row in self.map:  # For each row in map
             print(row)  # Print the row
 
- def findCharacterPosition(self):
+def findCharacterPosition(self):
         """_summary_: Find the character position"""
         for row in range(len(self.map)):  # Get rows number on the map
             for col in range(len(self.map[row])):  # Get columns number on the map
@@ -47,7 +48,7 @@ class Sokoban:
                     self.character_row = row  # Update the character row position
                     self.character_col = col  # Update the character col position
 
- def moveLeft(self):
+def moveLeft(self):
         """_summary_: Move the character to the left rules"""
         # 0. character, floor
         if (
@@ -178,7 +179,7 @@ class Sokoban:
               self.character_col = self.character_col - 1
               print("# 6 (personaje_meta, caja_meta, meta) izquierda")
 
- def moveRight(self):
+def moveRight(self):
         """_summary_: Move the character to the right rules"""
         # 0. character, floor
         if (
@@ -293,7 +294,7 @@ class Sokoban:
             self.map[self.character_row][self.character_col + 2] = 6
             self.character_col = self.character_col + 1
 
- def moveUp(self):
+def moveUp(self):
         """_summary_: Move the character up rules"""
         # 0. character, floor
         if (
@@ -408,7 +409,7 @@ class Sokoban:
               self.map[self.character_row - 2][self.character_col] = 6
               self.character_row = self.character_row - 1
 
- def moveDown(self):
+def moveDown(self):
         """_summary_: Move the character down rules"""
         # 0. character, floor
         if (
@@ -523,56 +524,39 @@ class Sokoban:
             self.map[self.character_row + 2][self.character_col] = 6 
             self.character_row = self.character_row + 1 
 
- def checkLevelComplete(self):
-        """_summary_: Check if level is complete
-        Returns:
-            complete(bool): Return if level is complete or not
-        """
-        # TODO: Check if the level is complete
-        # If return True, the level is complete
-        # If return False, the level is not complete
-        complete = False
-        return complete
-
- def play(self):
-        """_summary_: Play the game"""
-        self.loadMap()  # Call the map
-        self.findCharacterPosition()  # Update the character position for new map
-        instructions = "d-Right, a-Left, w-Up, s-Down"  # Instructions
-        print(instructions)  # Print the instructions
-        while True:  # Infinite loop
-            complete = self.checkLevelComplete()  # Check if the level is complete
-            if complete == True:  # If the level is complete
-                print("Level Complete")  # Print the level complete
-                input("Press Enter to continue...")  # Wait for the user to press enter
-                self.loadMap()  # Call the map
-                self.findCharacterPosition()  # Update the character position for new map
-            self.printMap()  # Call the printMap method
-            print(
-                "Character position: [{},{}]".format(
-                    self.character_row, self.character_col
-                )
-            )  # Print the character position
-            move = input("Select move: ")  # Ask for the move
-            if move == "a":  # If the move is left
-              self.moveLeft()  # Call moveLeft rules
-            elif move == "d":  # If the move is right
-              self.moveRight()  # Call moveRight rules
-            elif move == "w":  # If the move is up
-              self.moveUp()  # Call moveUp rules
-            elif move == "s":  # If the move is down
-              self.moveDown()  # Call moveDown rules
-            elif move == "q":  # If the move is quit
-              break  # Game quit
-
-
-game = Sokoban()  # Create a object from Sokoban class
-game.play()  # Fun Fun Fun ;
-
-
-
-
-
-
- 
-  
+def play(self):
+    instrucciones="a-izquierda\nd-derecha\nw-arriba\ns-abajo"
+    print(instrucciones)
+    lvl = 1
+    while True:
+      self.leerMapa(lvl)
+      print(f"\nNivel {lvl}")
+      self.imprimirMapa()
+      while True:
+        movimiento = input("Mover Hacia: ")
+        if movimiento == "d":
+          self.moverDerecha()
+        elif movimiento == "a":
+          self.moverIzquierda()
+        elif movimiento == "w":
+          self.moverArriba()
+        elif movimiento == "s":
+          self.moverAbajo()
+        elif movimiento == "q":
+          print("salir del juego")
+          break
+        else: 
+          pass
+          self.borrarS()
+          print(f"\nNivel {lvl}")
+          fin = self.imprimirMapa()
+          if fin:
+           print("Has completado el nivel!!!")
+           print("SIGUIENTE NIVEL")
+          lvl = 2
+          # espera 3 segundos para cambiar de nivel
+          "sleep(3)"
+          self.borrarS()
+          break
+game = Sokoban()  
+game.Play()
