@@ -1,9 +1,9 @@
 from os import system, name
 from time import sleep
 class Sokoban:
- """_summary_: Sokoban class"""
+   """_summary_: Sokoban class"""
     
-"""
+   """
       Description: Sokoban game template
       0 - Character
       1 - Floor
@@ -12,14 +12,14 @@ class Sokoban:
       4 - Target
       5 - Box_Target
       6 - Character_Target
-  """
-map = []
-"""nivel =open("Nivel.1","r")"""
+   """
+   map = []
+   """nivel =open("Nivel.1","r")"""   
 
-character_row = 3
-character_col = 3
+   character_row = 3
+   character_col = 3
 
-def loadMap(self,lvl):
+   def loadMap(self,lvl):
         if lvl == 1:
           self.nivel=open("Nivel.1", "r")
         else:
@@ -34,22 +34,22 @@ def loadMap(self,lvl):
             self.mapa.append(linea)
     
 
-def printMap(self):
-        """_summary_: Print the map"""
+   def printMap(self):
+        
         # TODO: Print the map
         for row in self.map:  # For each row in map
             print(row)  # Print the row
-
-def findCharacterPosition(self):
-        """_summary_: Find the character position"""
+"""
+   def findCharacterPosition(self):
+        
         for row in range(len(self.map)):  # Get rows number on the map
             for col in range(len(self.map[row])):  # Get columns number on the map
                 if self.map[row][col] == 3:  # If the character is found
                     self.character_row = row  # Update the character row position
                     self.character_col = col  # Update the character col position
 
-def moveLeft(self):
-        """_summary_: Move the character to the left rules"""
+   def moveLeft(self):
+        
         # 0. character, floor
         if (
             self.map[self.character_row][self.character_col] == 0
@@ -179,8 +179,8 @@ def moveLeft(self):
               self.character_col = self.character_col - 1
               print("# 6 (personaje_meta, caja_meta, meta) izquierda")
 
-def moveRight(self):
-        """_summary_: Move the character to the right rules"""
+   def moveRight(self):
+        
         # 0. character, floor
         if (
             self.map[self.character_row][self.character_col] == 0
@@ -294,8 +294,8 @@ def moveRight(self):
             self.map[self.character_row][self.character_col + 2] = 6
             self.character_col = self.character_col + 1
 
-def moveUp(self):
-        """_summary_: Move the character up rules"""
+   def moveUp(self):
+        
         # 0. character, floor
         if (
             self.map[self.character_row][self.character_col] == 0
@@ -409,8 +409,8 @@ def moveUp(self):
               self.map[self.character_row - 2][self.character_col] = 6
               self.character_row = self.character_row - 1
 
-def moveDown(self):
-        """_summary_: Move the character down rules"""
+   def moveDown(self):
+        
         # 0. character, floor
         if (
             self.map[self.character_row][self.character_col] == 0
@@ -524,39 +524,40 @@ def moveDown(self):
             self.map[self.character_row + 2][self.character_col] = 6 
             self.character_row = self.character_row + 1 
 
-def play(self):
-    instrucciones="a-izquierda\nd-derecha\nw-arriba\ns-abajo"
-    print(instrucciones)
-    lvl = 1
-    while True:
-      self.leerMapa(lvl)
-      print(f"\nNivel {lvl}")
-      self.imprimirMapa()
-      while True:
-        movimiento = input("Mover Hacia: ")
-        if movimiento == "d":
-          self.moverDerecha()
-        elif movimiento == "a":
+   def play(self):
+     instrucciones="a-izquierda\nd-derecha\nw-arriba\ns-abajo"
+     print(instrucciones)
+     lvl = 1
+     while True:
+       self.leerMapa(lvl)
+       print(f"\nNivel {lvl}")
+       self.imprimirMapa()
+       while True:
+         movimiento = input("Mover Hacia: ")
+         if movimiento == "d":
+           self.moverDerecha()
+         elif movimiento == "a":
           self.moverIzquierda()
-        elif movimiento == "w":
+         elif movimiento == "w":
           self.moverArriba()
-        elif movimiento == "s":
+         elif movimiento == "s":
           self.moverAbajo()
-        elif movimiento == "q":
+         elif movimiento == "q":
           print("salir del juego")
           break
-        else: 
-          pass
-          self.borrarS()
-          print(f"\nNivel {lvl}")
-          fin = self.imprimirMapa()
-          if fin:
-           print("Has completado el nivel!!!")
-           print("SIGUIENTE NIVEL")
-          lvl = 2
-          # espera 3 segundos para cambiar de nivel
-          "sleep(3)"
-          self.borrarS()
-          break
-game = Sokoban()  
-game.Play()
+         else: 
+           pass
+           self.borrarS()
+           print(f"\nNivel {lvl}")
+           fin = self.imprimirMapa()
+           if fin:
+            print("Has completado el nivel!!!")
+            print("SIGUIENTE NIVEL")
+           lvl = 2
+           # espera 3 segundos para cambiar de nivel
+           "sleep(3)"
+           self.borrarS()
+           break
+  game = Sokoban()
+  game.play()
+"""
