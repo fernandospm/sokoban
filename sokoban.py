@@ -19,12 +19,12 @@ map = []
 character_row = 3
 character_col = 3
 
-def leerMapa(self,lvl):
+def loadMap(self,lvl):
         if lvl == 1:
-          self.nivel=open("Nivel,1", "r")
+          self.nivel=open("Nivel.1", "r")
         else:
-          self.nivel=open("Nivel,2", "r")
-        self.mapa = []
+          self.nivel=open("Nivel.2", "r")
+        self.map = []
         for  row in self.nivel:
             linea = []
             for digito in row:
@@ -44,7 +44,7 @@ def findCharacterPosition(self):
         """_summary_: Find the character position"""
         for row in range(len(self.map)):  # Get rows number on the map
             for col in range(len(self.map[row])):  # Get columns number on the map
-                if self.map[row][col] == 0:  # If the character is found
+                if self.map[row][col] == 3:  # If the character is found
                     self.character_row = row  # Update the character row position
                     self.character_col = col  # Update the character col position
 
